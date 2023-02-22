@@ -10,7 +10,6 @@
 
 ![info](Linux%20Practice.png)
 
-
 2.	Linux A
     1. Сконфигурировать Hostname следующим образом: <your_surname>_server (пропустить если делаете через Play with docker)
     2. Создать пользователя <your_surname>_1 (пропустить если делаете через Play with docker)
