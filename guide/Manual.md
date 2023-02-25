@@ -217,10 +217,9 @@ ssh <domain-name>@direct.labs.play-with-docker.com
 3. в pwd используется дистрибутив alpine, поэтому часть функционала (systemd, netplan) отсутсвует
 4. настройку сети необходимо сделать с помощью ipvlan. Серевер А и С - по одному адаптеру согласно схеме. Сервер В - два адаптера согласно схеме, подсети должны быть разные
 ```shell
-ip link add br0 type bridge # создаем новый адаптер с типом bridge
-ip link set eth0 master br0 # делаем связь адаптера с eth0
-ip address add dev br0 xxx.xxx.xxx.xxx/<mask> # добавляем ip адрес адаптеру
-ip link set br0 up # включаем адаптер
+ip link add macvlan1 link eth0 type macvlan mode bridge # создаем новый адаптер с типом bridge и делаем связь адаптера с eth0 
+ip address add dev macvlan1 xxx.xxx.xxx.xxx/<mask> # добавляем ip адрес адаптеру
+ip link set macvlan1 up # включаем адаптер
 ```
 5. прописать маршруты у клиента А и С к их подсетям через шлюз машину В
 ```shell
